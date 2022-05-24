@@ -1,0 +1,113 @@
+# Acute Pain Management in the Perioperative Setting (2012)
+
+```{r, echo = FALSE, include = FALSE}
+library(tidyverse)
+library(janitor)
+library(kableExtra)
+knitr::opts_chunk$set(echo = FALSE, options(knitr.kable.NA = '', dev = 'svg'), knitr.graphics.error = FALSE,
+                      warning = FALSE, message = FALSE, fig.align = "left", comment = NA)
+opt_font <-  c("Source Sans Pro")
+opt_boot <- c("striped", "hover", "condensed")
+
+recs_dat <- readxl::read_xlsx("_data/pp_recs_all.xlsx", sheet = "Guidelines", range = "A1:F485")
+
+pain_recs <- recs_dat |> 
+    filter(str_detect(parameter, "Pain"))
+
+sections <- pain_recs |>
+  tabyl(rec_title) |>
+  select(rec_title)
+
+temp <- pain_recs |>
+  tabyl(rec_title)
+
+recs_display <- function(recs_list, sec_list){
+recs_list |> 
+    filter(rec_title == sec_list) |> 
+    select(rec, evidence) |> 
+    kbl( 
+    booktabs = T, align = c("lc"), escape = FALSE, # format = "latex",
+    col.names = c("Recommendation", "Evidence")
+  ) |> 
+  row_spec(0, bold = TRUE) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = opt_boot, position = "left") |> 
+  kable_classic(full_width = FALSE, html_font = opt_font, position = "left", "hover") |> 
+  column_spec(1, width = "40em") |> 
+  column_spec(2, width = "8em") |> 
+  footnote(
+    general = "Categories of evidence: ",
+    alphabet = c("Strength of evidence or category of recommentation"
+    ),
+    general_title = "",
+    footnote_as_chunk = FALSE
+  )
+}
+
+
+```
+
+## Geriatric Patients
+
+```{r}
+recs_display(pain_recs, "Geriatric Patients")
+```
+
+## Institutional Policies and Procedures for Providding Perioperative Pain Management
+
+```{r}
+recs_display(pain_recs, "Institutional Policies and Procedures for Providding Perioperative Pain Management")
+```
+
+## Multimodal and Multidisciplinary Interventions
+
+```{r}
+recs_display(pain_recs, "Multimodal and Multidisciplinary Interventions")
+```
+
+## Multimodal Techniques for Pain Management
+
+```{r}
+recs_display(pain_recs, "Multimodal Techniques for Pain Management")
+```
+
+## Other Patients
+
+```{r}
+recs_display(pain_recs, "Other Patients")
+```
+
+## Patient Evaluation
+
+```{r}
+recs_display(pain_recs, "Patient Evaluation")
+```
+
+## Pediatric Patients
+
+```{r}
+recs_display(pain_recs, "Pediatric Patients")
+```
+
+## Perioperative Techniques for Pain Management
+
+```{r}
+recs_display(pain_recs, "Perioperative Techniques for Pain Management")
+```
+
+## Preoperative Evaluation of the Patient
+
+```{r}
+recs_display(pain_recs, "Preoperative Evaluation of the Patient")
+```
+
+## Preoperative Preparation of the Patient
+
+```{r}
+recs_display(pain_recs, "Preoperative Preparation of the Patient")
+```
+
+## Single Modality Interventions
+
+```{r}
+recs_display(pain_recs, "Single Modality Interventions")
+```
