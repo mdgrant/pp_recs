@@ -111,3 +111,35 @@ recs_display(pain_recs, "Preoperative Preparation of the Patient")
 ```{r}
 recs_display(pain_recs, "Single Modality Interventions")
 ```
+
+## Evidence Rating Scheme
+
+***Category A***: Supportive Literature Randomized controlled trials report statistically significant (P \< 0.01) differences between clinical interventions for a specified clinical outcome.
+
+**Level 1**: The literature contains multiple RCTs, and aggregated findings are supported by meta-analysis.
+
+**Level 2**: The literature contains multiple RCTs, but the number of studies is insufficient to conduct a viable meta-analysis for the purpose of the Guidelines.
+
+**Level 3**: The literature contains a single randomized controlled trial.
+
+***Category B***: Suggestive Literature Information from observational studies permits inference of beneficial or harmful relationships among clinical interventions and clinical outcomes.
+
+**Level 1**: The literature contains observational comparisons (e.g., cohort, case-control research designs) of clinical interventions or conditions and indicates statistically significant differences between clinical interventions for a specified clinical outcome.
+
+**Level 2**: The literature contains noncomparative observational studies with associative (e.g., relative risk, correlation) or descriptive statistics.
+
+**Level 3**: The literature contains case reports.
+
+***Category C***: Equivocal Literature The literature cannot determine whether there are beneficial or harmful relationships among clinical interventions and clinical outcomes.
+
+**Level 1**: Meta-analysis did not find significant differences (P \> 0.01) among groups or conditions.
+
+**Level 2**: The number of studies is insufficient to conduct meta-analysis, and (1) RCTs have not found significant differences among groups or conditions or (2) RCTs report inconsistent findings.
+
+**Level 3**: Observational studies report inconsistent findings or do not permit inference of beneficial or harmful relationships.
+
+***Category D***: Insufficient Evidence from Literature The lack of scientific evidence in the literature is described by the following terms.
+
+**Inadequate**: The available literature cannot be used to assess relationships among clinical interventions and clinical outcomes. The literature either does not meet the criteria for content as defined in the "Focus" of the Guidelines or does not permit a clear interpretation of findings due to methodological concerns (e.g., confounding in study design or implementation).
+
+**Silent**: No identified studies address the specified relationships among interventions and outcomes.
