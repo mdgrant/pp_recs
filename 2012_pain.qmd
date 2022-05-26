@@ -35,8 +35,8 @@ recs_list |>
   column_spec(1, width = "40em") |> 
   column_spec(2, width = "8em") |> 
   footnote(
-    general = "Categories of evidence: ",
-    alphabet = c("Strength of evidence or category of recommentation"
+    # general = "Categories of evidence: ",
+    alphabet = c("Strength of evidence or category of recommendation."
     ),
     general_title = "",
     footnote_as_chunk = FALSE
