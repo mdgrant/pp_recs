@@ -27,7 +27,7 @@ recs_list |>
     select(rec, evidence) |> 
     kbl( 
     booktabs = T, align = c("lc"), escape = FALSE, # format = "latex",
-    col.names = c("Recommendation", "Evidence")
+    col.names = c("Recommendation", "Evidenceª")
   ) |> 
   row_spec(0, bold = TRUE) %>%
   kable_styling(full_width = FALSE, bootstrap_options = opt_boot, position = "left") |> 
