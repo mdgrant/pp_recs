@@ -2,182 +2,102 @@
 
 The complete guideline can be found [here.](https://pubs.asahq.org/anesthesiology/article/116/2/248/12956/Practice-Guidelines-for-Acute-Pain-Management-in)
 
-```{r, echo = FALSE, include = FALSE}
+```{r}
+#| echo: false
+gt_theme_mg <- function(data) {
+  data %>%
+    opt_row_striping() |>
+    opt_table_lines(extent = "none") |>
+    # opt_table_font(
+    #   font = list(
+    #     google_font(name = "Source Sans Pro")
+    #   )
+    # ) |>
+    # opt_table_font(stack = "Source Sans Pro") |>
+    tab_options(
+      table.font.color = "black",
+      table.font.names = "Source Sans Pro",
+      data_row.padding = px(2),
+      table.font.size = px(13), # ?12
+      column_labels.font.size = px(13),  # ?12
+      table.align = "left",
+      table_body.border.bottom.width = px(1.7),
+      table.border.top.width = px(1.7),
+      table_body.border.bottom.color = "#9A9EA1",
+      table.border.top.color = "#9A9EA1",
+      table_body.border.bottom.style = "solid",
+      table.border.top.style = "solid",
+      column_labels.border.bottom.color = "#9A9EA1",
+      column_labels.border.bottom.style = "solid",
+      column_labels.border.bottom.width = px(1.3),
+      column_labels.font.weight = "bold",
+      column_labels.padding = px(3),
+      heading.align = "left",
+      footnotes.padding = px(0),
+      footnotes.font.size = px(12),
+      source_notes.padding = px(0),
+    ) |>
+    opt_horizontal_padding(scale = 2) |>
+    tab_style(
+      style = list(cell_text(weight = "bold")),
+      locations = cells_row_groups()
+    ) |>
+    opt_footnote_marks(marks = "letters") |>
+    opt_footnote_spec(spec_ref = "^x", spec_ftr = "^x") |>
+  opt_css(
+    css = "
+    #one .gt_footnote_marks {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 85%;
+    vertical-align: 0px;
+    }
+  "
+  )
+}
+
+```
+
+```{r recommendations}
+#| echo: false
 library(tidyverse)
 library(janitor)
 library(kableExtra)
 library(gt)
 library(gtExtras)
 
-knitr::opts_chunk$set(echo = FALSE, options(knitr.kable.NA = '', dev = 'svg'), knitr.graphics.error = FALSE,
-                      warning = FALSE, message = FALSE, fig.align = "left", comment = NA)
-opt_font <-  c("Source Sans Pro")
-opt_boot <- c("striped", "hover", "condensed")
+recs_dat <- readxl::read_xlsx("_data/pp_recs_all.xlsx", sheet = "Guidelines", range = "A1:F485") |> 
+  filter(str_detect(parameter, "Acute Pain"))
 
-recs_dat <- readxl::read_xlsx("_data/pp_recs_all.xlsx", sheet = "Guidelines", range = "A1:F485")
+# sections <- recs_dat |>
+#   select(rec_title) |> 
+#   distinct()
 
-pain_recs <- recs_dat |> 
-    filter(str_detect(parameter, "Acute Pain"))
-
-sections <- pain_recs |>
-  select(rec_title) |> 
-  distinct()
-
-temp <- pain_recs |>
-  tabyl(rec_title)
-
-recs_display <- function(recs_list, sec_list){
-recs_list |> 
-    filter(rec_title == sec_list) |> 
-    select(rec, evidence) |> 
-    kbl( 
-    booktabs = T, align = c("lc"), escape = FALSE, # format = "latex",
-    col.names = c("Recommendation", "Evidenceª")
+recs_dat |> 
+  select(rec, rec_title, evidence) |> 
+  group_by(rec_title) |> 
+  gt() |> 
+  fmt_markdown(columns = c(rec)) |> 
+  cols_label(
+    rec              = "Recommendation",
+    evidence         = "Strength of Evidence"
   ) |> 
-  row_spec(0, bold = TRUE) %>%
-  kable_styling(full_width = FALSE, bootstrap_options = opt_boot, position = "left") |> 
-  kable_classic(full_width = FALSE, html_font = opt_font, position = "left", "hover") |> 
-  column_spec(1, width = "40em") |> 
-  column_spec(2, width = "8em") |> 
-  footnote(
-    # general = "Categories of evidence: ",
-    alphabet = c("Strength of evidence or category of recommendation."
-    ),
-    general_title = "",
-    footnote_as_chunk = FALSE
-  )
-}
-
-# use gt 
-# pain_recs |> 
-#     filter(rec_title == "Geriatric Patients") |> 
-#     select(rec, evidence) |> 
-#     gt() |> 
-#   tab_options(footnotes.marks = letters) |> 
-#   opt_css(
-#     css = "
-#     #one .gt_table {
-#       background-color: lightgrey;
-#     }
-#     #one .gt_row {
-#       padding: 20px 30px;
-#     }
-#     tr:hover {
-#     background-color: lightgrey;
-#     }
-#     #one .gt_col_heading {
-#       text-align: center !important;
-#     }
-#     "
-#   )
-#   
-#   
-#   
-#     kbl( 
-#     booktabs = T, align = c("lc"), escape = FALSE, # format = "latex",
-#     col.names = c("Recommendation", "Evidenceª")
-#   ) |> 
-#   row_spec(0, bold = TRUE) %>%
-#   kable_styling(full_width = FALSE, bootstrap_options = opt_boot, position = "left") |> 
-#   kable_classic(full_width = FALSE, html_font = opt_font, position = "left", "hover") |> 
-#   column_spec(1, width = "40em") |> 
-#   column_spec(2, width = "8em") |> 
-#   footnote(
-#     # general = "Categories of evidence: ",
-#     alphabet = c("Strength of evidence or category of recommendation."
-#     ),
-#     general_title = "",
-#     footnote_as_chunk = FALSE
-#   )
-
+  cols_width(
+    rec              ~ px(600),
+    evidence         ~ px(150)
+  ) |> 
+  gt_theme_mg() 
 
 ```
-
-## Institutional Policies and Procedures for Providding Perioperative Pain Management
-
-```{r}
-recs_display(pain_recs, "Institutional Policies and Procedures for Providding Perioperative Pain Management")
-```
-
-<!-- ## Multimodal and Multidisciplinary Interventions -->
-
-<!-- ```{r} -->
-
-<!-- recs_display(pain_recs, "Multimodal and Multidisciplinary Interventions") -->
-
-<!-- ``` -->
-
-## Preoperative Evaluation of the Patient
-
-```{r}
-recs_display(pain_recs, "Preoperative Evaluation of the Patient")
-```
-
-## Preoperative Preparation of the Patient
-
-```{r}
-recs_display(pain_recs, "Preoperative Preparation of the Patient")
-```
-
-<!-- ## Single Modality Interventions -->
-
-<!-- ```{r} -->
-
-<!-- #| eval = FALSE -->
-
-<!-- recs_display(pain_recs, "Single Modality Interventions") -->
-
-<!-- ``` -->
-
-## Perioperative Techniques for Pain Management
-
-```{r}
-recs_display(pain_recs, "Perioperative Techniques for Pain Management")
-```
-
-## Multimodal Techniques for Pain Management
-
-```{r}
-recs_display(pain_recs, "Multimodal Techniques for Pain Management")
-```
-
-## Pediatric Patients
-
-```{r}
-recs_display(pain_recs, "Pediatric Patients")
-```
-
-## Geriatric Patients
-
-```{r}
-recs_display(pain_recs, "Geriatric Patients")
-```
-
-## Other Patients
-
-```{r}
-recs_display(pain_recs, "Other Patients")
-```
-
-<!-- ## Patient Evaluation -->
-
-<!-- ```{r} -->
-
-<!-- recs_display(pain_recs, "Patient Evaluation") -->
-
-<!-- ``` -->
 
 ## Evidence Rating Scheme
 
-***Category A***: Supportive Literature Randomized controlled trials report statistically significant (P \< 0.01) differences between clinical interventions for a specified clinical outcome.
+***Category A***: Supportive Literature Randomized controlled trials report statistically significant (P \< 0.01) differences between clinical interventions for a specified clinical outcome.<br/>
+*Level 1*: The literature contains multiple RCTs, and aggregated findings are supported by meta-analysis.<br/>
+*Level 2*: The literature contains multiple RCTs, but the number of studies is insufficient to conduct a viable meta-analysis for the purpose of the Guidelines.<br/>
+*Level 3*: The literature contains a single randomized controlled trial.
 
-**Level 1**: The literature contains multiple RCTs, and aggregated findings are supported by meta-analysis.
-
-**Level 2**: The literature contains multiple RCTs, but the number of studies is insufficient to conduct a viable meta-analysis for the purpose of the Guidelines.
-
-**Level 3**: The literature contains a single randomized controlled trial.
-
-***Category B***: Suggestive Literature Information from observational studies permits inference of beneficial or harmful relationships among clinical interventions and clinical outcomes.
+**Category B**: Suggestive Literature Information from observational studies permits inference of beneficial or harmful relationships among clinical interventions and clinical outcomes.
 
 **Level 1**: The literature contains observational comparisons (e.g., cohort, case-control research designs) of clinical interventions or conditions and indicates statistically significant differences between clinical interventions for a specified clinical outcome.
 
