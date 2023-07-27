@@ -9,6 +9,7 @@ book:
   chapters:
     - index.qmd
     - 2012_pain.qmd
+    - 2015_neuraxial_opioid.qmd
     # - summary.qmd
     - references.qmd
   search:

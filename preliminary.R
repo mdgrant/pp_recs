@@ -4,6 +4,28 @@ library(kableExtra)
 library(gt)
 library(gtExtras)
 
+recs_dat <- readxl::read_xlsx("_data/pp_recs_all.xlsx", sheet = "Guidelines", range = "A1:F485")
+recs_function <- function(){
+recs_dat |> 
+    select(rec, rec_title, evidence) |> 
+    group_by(rec_title) |> 
+    gt(id = "one") |> 
+    fmt_markdown(columns = c(rec)) |> 
+    cols_label(
+        rec              = "Recommendation",
+        evidence         = md("Strength <br/>of Evidence")
+    ) |> 
+    cols_width(
+        rec              ~ px(600),
+        evidence         ~ px(110)
+    ) |> 
+    tab_style(style = cell_text(align = "center"),      locations = cells_column_labels(columns = everything())) |>
+    tab_style(style = cell_text(align = "center"),      locations = cells_body(columns = c(evidence))) |>
+    gt_theme_mg() |> 
+    opt_stylize(style = 6, color = "blue", add_row_striping = TRUE)
+}
+
+
 gt_theme_mg <- function(data) {
   data %>%
     opt_row_striping() |>
