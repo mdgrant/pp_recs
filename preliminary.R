@@ -21,8 +21,8 @@ recs_dat |>
     ) |> 
     tab_style(style = cell_text(align = "center"),      locations = cells_column_labels(columns = everything())) |>
     tab_style(style = cell_text(align = "center"),      locations = cells_body(columns = c(evidence))) |>
-    gt_theme_mg() |> 
-    opt_stylize(style = 6, color = "blue", add_row_striping = TRUE)
+    gt_theme_mg() 
+    # opt_stylize(style = 6, color = "blue", add_row_striping = FALSE)
 }
 
 
