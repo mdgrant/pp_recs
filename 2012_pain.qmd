@@ -14,10 +14,7 @@ tables:
         sep: " -- "
 ---
 
-<br/>
-
 The complete guideline can be found [here.](https://pubs.asahq.org/anesthesiology/article/116/2/248/12956/Practice-Guidelines-for-Acute-Pain-Management-in)
-
 
 ## Recommendations
 
@@ -28,7 +25,7 @@ source("preliminary.R")
 recs_dat <- readxl::read_xlsx("_data/pp_recs_all.xlsx", sheet = "Guidelines", range = "A1:F485") |> 
   filter(str_detect(parameter, "Acute Pain")) |> 
   mutate(
-    evidence = str_remove(evidence, " statement"),
+    evidence = str_replace(evidence, "Consensus statement", " — "),
     rec = str_replace(rec, "^They", "[Anesthesiologists]")
   )
 
@@ -41,7 +38,6 @@ recs_dat |>
   group_by(rec_title) |> 
   gt(id = "one") |> 
   fmt_markdown(columns = c(rec)) |> 
-  tab_style(style = cell_text(align = "center"),      locations = cells_column_labels(columns = everything())) |>
   cols_label(
     rec              = "Recommendation",
     evidence         = md("Strength <br/>of Evidence")
@@ -50,8 +46,11 @@ recs_dat |>
     rec              ~ px(600),
     evidence         ~ px(110)
   ) |> 
+  tab_style(style = cell_text(align = "center"),      locations = cells_column_labels(columns = everything())) |>
+  tab_style(style = cell_text(align = "center"),      locations = cells_body(columns = c(evidence))) |>
   gt_theme_mg() |> 
-  opt_stylize(style = 6, color = "blue", add_row_striping = TRUE)
+  opt_stylize(style = 6, color = "blue", add_row_striping = TRUE) |> 
+  tab_footnote("— : Recommendation/explanatory without strength of evidence rating.")
 
 ```
 
