@@ -11,6 +11,10 @@ book:
     - 2012_pain.qmd
     # - summary.qmd
     - references.qmd
+  search:
+    location: navbar
+    type: textbox
+    limit: 40
 
 bibliography: references.bib
 
