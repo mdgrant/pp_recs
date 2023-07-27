@@ -1,8 +1,4 @@
 ---
-title: "Prevention, Detection and Management of Respiratory Depression Associated with Neuraxial Opioid Administration"
----
-
----
 title: "Prevention, Detection and Management of Respiratory Depression Associated with Neuraxial Opioid Administration (2015)"
 editor: source
 toc-title: "**Respiratory Depression Neuraxial Opioid (2015)**"
