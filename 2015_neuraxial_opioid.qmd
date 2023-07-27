@@ -45,7 +45,7 @@ recs_function() |>
 
 ***Category A***<br/>
 RCTs report comparative findings between clinical interventions for specified outcomes. Statistically significant (P < 0.01) outcomes are designated as either beneficial (B) or harmful (H) for the patient; statistically nonsignificant findings are designated as equivocal (E).<br/>
-*Level 1:* The literature contains a sufficient number of RCTs to conduct meta-analysis,§ and meta-analytic findings from these aggregated studies are reported as evidence.<br/>
+*Level 1:* The literature contains a sufficient number of RCTs to conduct meta-analysis, and meta-analytic findings from these aggregated studies are reported as evidence.<br/>
 *Level 2:* The literature contains multiple RCTs, but the number of RCTs is not sufficient to conduct a viable meta-analysis for the purpose of these updated guidelines. Findings from these RCTs are reported separately as evidence.<br/>
 *Level 3:* The literature contains a single RCT, and findings are reported as evidence.
 
