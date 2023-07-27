@@ -1,0 +1,103 @@
+/* css styles */
+
+foot_mg {
+  font-size: 13px;
+  line-height: 0.6;
+  color: black;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+wf-mg {
+  font-size: 13px;
+  line-height: .4;
+  color: black;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+p {
+  line-height: 1.1;
+}
+
+.navbar-dark, .navbar-light, .navbar {
+  background-color: #212529;
+}
+
+#one tr:hover {
+    background-color: #D5D8DC;
+}
+
+.navbar-dark, span.menu-text {
+    font-size: 16px;
+}
+
+/* Styles for the priority table */
+.priority-tbl {
+  font-size: 14px;
+  line-height: 10px;
+}
+
+.bar-chart {
+  flex-grow: 1;
+  margin-left: 6px;
+  height: 14px;
+}
+
+.bar {
+  height: 50%;
+}
+
+.rt-align-center {
+  text-align: center;
+}
+
+.Reactable
+.rt-thead
+.rt-th{
+  line-height: normal;
+  position: relative
+}
+
+div.callout-note.callout {
+    border-left-color: #F9F9F9 ;
+}
+
+.callout.callout-style-simple {
+    padding: 0.4em 0.7em;
+    border-left: 5px solid;
+    border-right: 1px solid #FFFFFF ;
+    border-top: 1px solid #FFFFFF ;
+    border-bottom: 1px solid #FFFFFF ;
+}
+
+.callout.callout-style-simple>div.callout-header {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 400;
+    opacity: 100%;
+}
+
+.table-caption {
+  text-align: left;
+}
+
+.sidebar nav[role="doc-toc"] ul {
+	 display: block;
+}
+
+.toc-title {
+  toc-color: #A93226 ;
+}
+
+vertical-text {
+   writing-mode: vertical-lr;
+   transform: rotate(180deg);
+}
+
+
+
+```
+
+
+
