@@ -1,7 +1,7 @@
 ---
-title: "Prevention, Detection and Management of Respiratory Depression Associated with Neuraxial Opioid Administration (2015)"
+title: "Practice Guidelines for Obstetric Anesthesia (2016)"
 editor: source
-toc-title: "**Respiratory Depression Neuraxial Opioid (2015)**"
+toc-title: "**Obstetric Anesthesia (2016)**"
 toc-location: "right"
 cap-location: "top"
 toc-depth: 3
@@ -14,7 +14,7 @@ tables:
         sep: " -- "
 ---
 
-The complete guideline can be found [here.](https://pubs.asahq.org/anesthesiology/article/124/3/535/14252/Practice-Guidelines-for-the-Prevention-Detection)
+The complete guideline can be found [here.](https://pubs.asahq.org/anesthesiology/article/124/2/270/12693/Practice-Guidelines-for-Obstetric-AnesthesiaAn)
 
 ## Recommendations
 
@@ -22,7 +22,7 @@ The complete guideline can be found [here.](https://pubs.asahq.org/anesthesiolog
 #| echo: false
 source("preliminary.R")
 recs_dat <- recs_all_dat |>  
-  filter(str_detect(parameter, "Neuraxial Opioid Administration")) |> 
+  filter(str_detect(parameter, "Obstetrics Anesthesia")) |> 
   mutate(
     evidence = str_replace(evidence, "Consensus statement", " — "),
     rec = str_replace(rec, "^They", "[Anesthesiologists]")

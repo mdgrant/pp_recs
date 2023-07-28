@@ -1,7 +1,7 @@
 ---
-title: "Acute Pain Management in the Perioperative Setting (2012)"
+title: "Practice Guidelines for Central Venous Access (2012)"
 editor: source
-toc-title: "**Acute Pain Management (2012)**"
+toc-title: "**Central Venous Access (2012)**"
 toc-location: "right"
 cap-location: "top"
 toc-depth: 3
@@ -14,21 +14,23 @@ tables:
         sep: " -- "
 ---
 
-The complete guideline can be found [here.](https://pubs.asahq.org/anesthesiology/article/116/2/248/12956/Practice-Guidelines-for-Acute-Pain-Management-in)
+The complete guideline can be found [here.](https://pubs.asahq.org/anesthesiology/article/116/3/539/12984/Practice-Guidelines-for-Central-Venous-AccessA)
 
 ## Recommendations
 
 ```{r recommendations}
 #| echo: false
 source("preliminary.R")
-recs_dat <- recs_all_dat |> 
-  filter(str_detect(parameter, "Acute Pain")) |> 
+recs_dat <- recs_all_dat |>  
+  filter(str_detect(parameter, "Central Venous Access")) |> 
   mutate(
     evidence = str_replace(evidence, "Consensus statement", " — "),
     rec = str_replace(rec, "^They", "[Anesthesiologists]")
   )
 
-# sections()
+# sections <- recs_dat |>
+#   select(rec_title) |> 
+#   distinct()
 
 recs_function() |> 
   tab_footnote("— : Recommendation/explanatory without strength of evidence rating.")

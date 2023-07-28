@@ -1,0 +1,64 @@
+---
+title: "Chronic Pain Management (2010)"
+editor: source
+toc-title: "**Chronic Pain (2010)**"
+toc-location: "right"
+cap-location: "top"
+toc-depth: 3
+page-layout: full
+css: styles.css
+tables:
+      style: Table
+      caption:
+        pre: "Table "
+        sep: " -- "
+---
+
+The complete guideline can be found [here.](https://pubs.asahq.org/anesthesiology/article/112/4/810/10691/Practice-Guidelines-for-Chronic-Pain-ManagementAn)
+
+## Recommendations
+
+```{r recommendations}
+#| echo: false
+source("preliminary.R")
+recs_dat <- recs_all_dat |>  
+  filter(str_detect(parameter, "Chronic Pain")) |> 
+  mutate(
+    evidence = str_replace(evidence, "Consensus statement", " — "),
+    rec = str_replace(rec, "^They", "[Anesthesiologists]")
+  )
+
+# sections <- recs_dat |>
+#   select(rec_title) |> 
+#   distinct()
+
+recs_function() |> 
+  tab_footnote("— : Recommendation/explanatory without strength of evidence rating.")
+
+```
+
+## Evidence Rating Scheme
+
+***Category A: Supportive Literature***<br/>
+Randomized controlled trials report statistically significant (P < 0.01) differences between clinical interventions for a specified clinical outcome.<br/>
+*Level 1:* The literature contains multiple, randomized controlled trials, and the aggregated findings are supported by meta-analysis.<br/>
+*Level 2:* The literature contains multiple, randomized controlled trials, but there is an insufficient number of studies to conduct a viable meta-analysis for the purpose of these Guidelines.
+*Level 3:* The literature contains a single randomized controlled trial.
+
+***Category B: Suggestive Literature***<br/>
+Information from observational studies permits inference of beneficial or harmful relationships among clinical interventions and clinical outcomes.<br/>
+*Level 1:* The literature contains observational comparisons (e.g ., cohort and case–control research designs) of clinical interventions or conditions and indicates statistically significant differences between clinical interventions for a specified clinical outcome.<br/>
+*Level 2:* The literature contains noncomparative observational studies with associative (e.g., relative risk and correlation) or descriptive statistics.<br/>
+*Level 3:* The literature contains case reports.<br/>
+
+***Category C: Equivocal Literature***<br/>
+The literature cannot determine whether there are beneficial or harmful relationships among clinical interventions and clinical outcomes.<br/>
+*Level 1:* Meta-analysis did not find significant differences among groups or conditions.<br/>
+*Level 2:* There is an insufficient number of studies to conduct meta-analysis and (1) randomized controlled trials have not found significant differences among groups or conditions or (2) randomized controlled trials report inconsistent findings.<br/>
+*Level 3:* Observational studies report inconsistent findings or do not permit inference of beneficial or harmful relationships.
+
+***Category D: Insufficient Evidence from Literature***<br/>
+The lack of scientific evidence in the literature is described by the following conditions.<br/>
+(1) No identified studies address the specified relationships among interventions and outcomes.<br/>
+(2) The available literature cannot be used to assess relationships among clinical interventions and clinical outcomes. The literature either does not meet the criteria for content as defined in the “Focus” of the Guidelines or does not permit a clear interpretation of findings due to methodological concerns (e.g ., confounding in study design or implementation).
+

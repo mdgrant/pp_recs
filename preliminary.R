@@ -4,7 +4,7 @@ library(kableExtra)
 library(gt)
 library(gtExtras)
 
-recs_dat <- readxl::read_xlsx("_data/pp_recs_all.xlsx", sheet = "Guidelines", range = "A1:F485")
+recs_all_dat <- readxl::read_xlsx("_data/pp_recs_all.xlsx", sheet = "Guidelines", range = "A1:F485")
 recs_function <- function(){
 recs_dat |> 
     select(rec, rec_title, evidence) |> 
@@ -21,9 +21,36 @@ recs_dat |>
     ) |> 
     tab_style(style = cell_text(align = "center"),      locations = cells_column_labels(columns = everything())) |>
     tab_style(style = cell_text(align = "center"),      locations = cells_body(columns = c(evidence))) |>
-    gt_theme_mg() 
+    gt_theme_mg() |> 
+    sub_missing(columns = everything(), missing_text = "") 
     # opt_stylize(style = 6, color = "blue", add_row_striping = FALSE)
 }
+
+recs_all_new_dat <- readxl::read_xlsx("_data/pp_recs_all.xlsx", sheet = "Guidelines_new", range = "A1:F14")
+
+recs_new_function <- function(){
+  recs_dat |> 
+    select(rec, sor, grade, foot_note) |> 
+    gt(id = "one") |> 
+    cols_hide(c(foot_note)) |>
+    fmt_markdown(columns = c(rec)) |> 
+    cols_label(
+      rec              = "Recommendation",
+      sor              = md("<font size = 2> Strength <br/>of Recommendation </font>"),
+      grade            = md("GRADE")
+    ) |> 
+    cols_width(
+      rec              ~ px(500),
+      sor              ~ px(115),
+      grade            ~ px(100)
+    ) |> 
+    tab_style(style = cell_text(align = "center"),      locations = cells_column_labels(columns = everything())) |>
+    tab_style(style = cell_text(align = "center"),      locations = cells_body(columns = c(sor, grade))) |>
+    gt_theme_mg() |> 
+    sub_missing(columns = everything(), missing_text = "") 
+  # opt_stylize(style = 6, color = "blue", add_row_striping = FALSE)
+}
+
 
 
 gt_theme_mg <- function(data) {
@@ -76,4 +103,10 @@ gt_theme_mg <- function(data) {
     }
   "
     )
+}
+
+sections <- function(){
+  recs_dat |>
+  select(rec_title) |> 
+  distinct()
 }

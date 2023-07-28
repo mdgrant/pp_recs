@@ -1,3 +1,25 @@
 # Preface {.unnumbered}
 
 Recommendations from the practice parameters. Note that the "Evidence" rating schemes (strength of evidence) may differ across practice parameters and defined accordingly for each.
+
+## Included practice parameter recommendations
+
+- 2023 American Society of Anesthesiologists Practice Guidelines for Monitoring and Antagonism of Neuromuscular Blockade: A Report by the American Society of Anesthesiologists Task Force on Neuromuscular Blockade [<i class="bi bi-box-arrow-in-up-right"></i>](2023_nmb.html)
+
+- 2023 American Society of Anesthesiologists Practice Guidelines for Preoperative Fasting: Carbohydrate-containing Clear Liquids with or without Protein, Chewing Gum, and Pediatric Fasting Duration — A Modular Update of the 2017 American Society of Anesthesiologists Practice Guidelines for Preoperative Fasting [<i class="bi bi-box-arrow-in-up-right"></i>](2023_fasting.html)
+
+- Practice Guidelines for Obstetric Anesthesia [<i class="bi bi-box-arrow-in-up-right"></i>](2016_obstetrics_anesthesia.html)
+
+- Practice Guidelines for Perioperative Blood Management [<i class="bi bi-box-arrow-in-up-right"></i>](2015_blood_management.html)
+
+- Practice Guidelines for the Prevention, Detection, and Management of Respiratory Depression Associated with Neuraxial Opioid Administration [<i class="bi bi-box-arrow-in-up-right"></i>](2015_blood_management.html)
+
+- Practice Guidelines for Management of the Difficult airway [<i class="bi bi-box-arrow-in-up-right"></i>](2013_difficult_airway.html)
+
+- Practice Guidelines for Acute Pain Management in the Perioperative Setting [<i class="bi bi-box-arrow-in-up-right"></i>](2012_pain.html)
+
+- Practice Guidelines for Central Venous Access [<i class="bi bi-box-arrow-in-up-right"></i>](2012_central_venous_access.html)
+
+- Practice Guidelines for Chronic Pain Management [<i class="bi bi-box-arrow-in-up-right"></i>](2010_chronic_pain.html)
+
+

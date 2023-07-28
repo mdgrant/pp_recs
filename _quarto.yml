@@ -5,11 +5,18 @@ project:
 book:
   title: "Practice Parameter Recommendations"
   author: ""
-  date: "5/24/2022"
+  date: "2023-07-28"
   chapters:
     - index.qmd
-    - 2012_pain.qmd
+    - 2023_nmb.qmd
+    - 2023_fasting.qmd
+    - 2016_obstetrics_anesthesia.qmd
+    - 2015_blood_management.qmd
     - 2015_neuraxial_opioid.qmd
+    - 2013_difficult_airway.qmd
+    - 2012_central_venous_access.qmd
+    - 2012_pain.qmd
+    - 2010_chronic_pain.qmd
     # - summary.qmd
     - references.qmd
   search:

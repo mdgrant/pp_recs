@@ -1,0 +1,45 @@
+---
+title: "Practice Guidelines for Preoperative Fasting: Carbohydrate-containing Clear Liquids with or without Protein, Chewing Gum, and Pediatric Fasting Duration (2023)"
+editor: source
+toc-title: "**Fasting Update — Clear Liquids & Chewing Gum (2023)**"
+toc-location: "right"
+cap-location: "top"
+toc-depth: 3
+page-layout: full
+css: styles.css
+tables:
+      style: Table
+      caption:
+        pre: "Table "
+        sep: " -- "
+---
+
+The complete guideline can be found [here.](https://pubs.asahq.org/anesthesiology/article/138/2/132/137508/2023-American-Society-of-Anesthesiologists)
+
+## Recommendations
+
+```{r recommendations}
+#| echo: false
+source("preliminary.R")
+recs_dat <- recs_all_new_dat |>  
+  filter(str_detect(parameter, "Fasting"))
+
+# sections <- recs_dat |>
+#   select(rec_title) |> 
+#   distinct()
+
+recs_new_function() |> 
+  tab_footnote("Individuals without coexisting diseases or conditions that may increase the risk for aspiration, including esophageal disorders such as significant uncontrolled reflux disease, hiatal hernia, Zenker’s diverticulum, achalasia, stricture, previous gastric surgery (for example, gastric bypass), gastroparesis, diabetes mellitus, opioid use, gastrointestinal obstruction or acute intraabdominal processes, pregnancy, obesity, and emergency procedures. Exercise clinical judgement with this patient population. †Up to 400 mL of clear liquids is considered an appropriate volume. Trial participants ingested a median of 400 mL of carbohydrate-containing clear liquids (interquartile range, 300 to 400 mL) up to 2 h before anesthesia administration. ‡Chewing gum should be removed before any sedative/anesthetic is administered.", locations = cells_body(columns = rec, rows = 1)) |> 
+  tab_footnote("Chewing gum should be removed before any sedative/anesthetic is administered.", locations = cells_body(columns = rec, rows = 3))
+
+```
+
+## GRADE
+
+**High** --- We are very confident that the true effect lies close to that of the estimate of the effect.
+
+**Moderate** --- We are moderately confident in the effect estimate: The true effect is likely to be close to the estimate of the effect, but there is a possibility that it is substantially different.
+
+**Low** --- Our confidence in the effect estimate is limited: The true effect may be substantially different from the estimate of the effect.
+
+**Very Low** --- We have very little confidence in the effect estimate: The true effect is likely to be substantially different from the estimate of effect.

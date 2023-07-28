@@ -1,0 +1,44 @@
+---
+title: "Practice Guidelines for Monitoring and Antagonism of Neuromuscular Blockade (2023)"
+editor: source
+toc-title: "**Neuromuscular Blockade (2023)**"
+toc-location: "right"
+cap-location: "top"
+toc-depth: 3
+page-layout: full
+css: styles.css
+tables:
+      style: Table
+      caption:
+        pre: "Table "
+        sep: " -- "
+---
+
+The complete guideline can be found [here.](https://pubs.asahq.org/anesthesiology/article/138/1/13/137379/2023-American-Society-of-Anesthesiologists)
+
+## Recommendations
+
+```{r recommendations}
+#| echo: false
+source("preliminary.R")
+recs_dat <- recs_all_new_dat |>  
+  filter(str_detect(parameter, "NMB"))
+
+# sections <- recs_dat |>
+#   select(rec_title) |> 
+#   distinct()
+
+recs_new_function() |> 
+  tab_footnote("Deep: posttetanic count greater than or equal to 1 and train-of-four count 0; mod-erate: train-of-four count 1 to 3; shallow: train-of-four count 4 and train-of-four ratio less than 0.4; minimal: train-of-four ratio 0.4 to less than 0.9.", locations = cells_body(columns = rec, rows = 6))
+  
+```
+
+## GRADE
+
+**High** --- We are very confident that the true effect lies close to that of the estimate of the effect.
+
+**Moderate** --- We are moderately confident in the effect estimate: The true effect is likely to be close to the estimate of the effect, but there is a possibility that it is substantially different.
+
+**Low** --- Our confidence in the effect estimate is limited: The true effect may be substantially different from the estimate of the effect.
+
+**Very Low** --- We have very little confidence in the effect estimate: The true effect is likely to be substantially different from the estimate of effect.
