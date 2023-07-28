@@ -36,7 +36,7 @@ recs_new_function <- function(){
     fmt_markdown(columns = c(rec)) |> 
     cols_label(
       rec              = "Recommendation",
-      sor              = md("<font size = 2> Strength <br/>of Recommendation </font>"),
+      sor              = md("<font size = 2> Strength of <br/> Recommendation </font>"),
       grade            = md("GRADE")
     ) |> 
     cols_width(
