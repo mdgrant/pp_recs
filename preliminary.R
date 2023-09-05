@@ -4,15 +4,20 @@ library(kableExtra)
 library(gt)
 library(gtExtras)
 
-recs_all_dat <- readxl::read_xlsx("_data/pp_recs_all_2023-07-31.xlsx", sheet = "Guidelines", range = "A1:F485")
+recs_all_dat <- readxl::read_xlsx("_data/pp_recs_all_2023-09-05.xlsx", sheet = "Guidelines", range = "A1:G592")
 recs_all_new_dat <- readxl::read_xlsx("_data/pp_recs_all_2023-07-31.xlsx", sheet = "Guidelines_new", range = "A1:F14")
 recs_advisory_dat <- readxl::read_xlsx("_data/pp_recs_all_2023-09-05.xlsx", sheet = "Practice Advisory", range = "A1:G142")
 
 recs_function <- function(){
 recs_dat |> 
-    select(rec, rec_title, evidence) |> 
+    select(rec, rec_title, subrec, evidence) |>
+    mutate(
+      rec = ifelse(subrec == "yes", paste("-", rec), rec),
+      evidence = ifelse(str_detect(evidence, "Insufficient"), "I", evidence)
+    ) |> 
     group_by(rec_title) |> 
     gt(id = "one") |> 
+    cols_hide(subrec) |>
     fmt_markdown(columns = c(rec)) |> 
     cols_label(
         rec              = "Recommendation",
@@ -25,7 +30,8 @@ recs_dat |>
     tab_style(style = cell_text(align = "center"),      locations = cells_column_labels(columns = everything())) |>
     tab_style(style = cell_text(align = "center"),      locations = cells_body(columns = c(evidence))) |>
     gt_theme_mg() |> 
-    sub_missing(columns = everything(), missing_text = "") 
+    sub_missing(columns = everything(), missing_text = "") |> 
+    tab_footnote("I: Insufficient literature.") 
     # opt_stylize(style = 6, color = "blue", add_row_striping = FALSE)
 }
 
