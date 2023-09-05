@@ -4,7 +4,10 @@ library(kableExtra)
 library(gt)
 library(gtExtras)
 
-recs_all_dat <- readxl::read_xlsx("_data/pp_recs_all.xlsx", sheet = "Guidelines", range = "A1:F485")
+recs_all_dat <- readxl::read_xlsx("_data/pp_recs_all_2023-07-31.xlsx", sheet = "Guidelines", range = "A1:F485")
+recs_all_new_dat <- readxl::read_xlsx("_data/pp_recs_all_2023-07-31.xlsx", sheet = "Guidelines_new", range = "A1:F14")
+recs_advisory_dat <- readxl::read_xlsx("_data/pp_recs_all_2023-09-05.xlsx", sheet = "Practice Advisory", range = "A1:G142")
+
 recs_function <- function(){
 recs_dat |> 
     select(rec, rec_title, evidence) |> 
@@ -25,8 +28,6 @@ recs_dat |>
     sub_missing(columns = everything(), missing_text = "") 
     # opt_stylize(style = 6, color = "blue", add_row_striping = FALSE)
 }
-
-recs_all_new_dat <- readxl::read_xlsx("_data/pp_recs_all.xlsx", sheet = "Guidelines_new", range = "A1:F14")
 
 recs_new_function <- function(){
   recs_dat |> 
@@ -51,7 +52,32 @@ recs_new_function <- function(){
   # opt_stylize(style = 6, color = "blue", add_row_striping = FALSE)
 }
 
-
+recs_advisory_function <- function(){
+  recs_dat |>
+    select(rec, rec_title, subrec, evidence) |>
+    mutate(
+      rec = ifelse(subrec == "yes", paste("-", rec), rec),
+      evidence = ifelse(str_detect(evidence, "Insufficient"), "I", evidence)
+    ) |> 
+    group_by(rec_title) |>
+    gt(id = "one") |>
+    cols_hide(subrec) |>
+    fmt_markdown(columns = c(rec)) |>
+    cols_label(
+      rec              = "Recommendation",
+      evidence         = md("Strength <br/>of Evidence")
+    ) |>
+    cols_width(
+      rec ~ px(600),
+      evidence ~ px(110)
+    ) |>
+    tab_style(style = cell_text(style = "italic"), locations = cells_body(columns = rec, rows = subrec == "yes")) |> 
+    tab_style(style = cell_text(align = "center"), locations = cells_column_labels(columns = everything())) |>
+    tab_style(style = cell_text(align = "center"), locations = cells_body(columns = c(evidence))) |>
+    gt_theme_mg() |>
+    tab_footnote("I: Insufficient literature.") |> 
+    sub_missing(columns = everything(), missing_text = "") 
+}
 
 gt_theme_mg <- function(data) {
   data %>%

@@ -20,6 +20,8 @@ Recommendations from the practice parameters. Note that the "Evidence" rating sc
 
 - Practice Guidelines for Central Venous Access [<i class="bi bi-box-arrow-in-up-right"></i>](2012_central_venous_access.html)
 
+- Practice Advisory for Preanesthesia Evaluation [<i class="bi bi-box-arrow-in-up-right"></i>](2012_preopeval.html)
+
 - Practice Guidelines for Chronic Pain Management [<i class="bi bi-box-arrow-in-up-right"></i>](2010_chronic_pain.html)
 
 

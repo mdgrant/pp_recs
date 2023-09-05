@@ -1,0 +1,86 @@
+---
+title: "Practice Advisory for Preanesthesia Evaluation (2012)"
+editor: source
+toc-title: "**Preanesthesia Evaluation (2012)**"
+toc-location: "right"
+cap-location: "top"
+toc-depth: 3
+page-layout: full
+css: styles.css
+tables:
+      style: Table
+      caption:
+        pre: "Table "
+        sep: " -- "
+---
+
+The complete guideline can be found [here.](https://pubs.asahq.org/anesthesiology/article/116/3/522/13033/Practice-Advisory-for-Preanesthesia-EvaluationAn)
+
+## Recommendations
+
+```{r recommendations}
+#| echo: false
+source("preliminary.R")
+recs_dat <- recs_advisory_dat |> 
+  filter(parameter == "Preanesthesia Evaluation") |> 
+  mutate(
+    evidence = str_replace(evidence, "Consensus statement", " — "),
+    # rec = str_replace(rec, "^They", "[Anesthesiologists]")
+  )
+
+# sections()
+
+recs_advisory_function() 
+
+# recs_advisory_dat |>
+#   select(rec, rec_title, subrec, evidence) |>
+#   mutate(
+#     rec = ifelse(subrec == "yes", paste("-", rec), rec)
+#   ) |> 
+#   group_by(rec_title) |>
+#   gt(id = "one") |>
+#   cols_hide(subrec) |>
+#   fmt_markdown(columns = c(rec)) |>
+#   cols_label(
+#     rec              = "Recommendation",
+#     evidence         = md("Strength <br/>of Evidence")
+#   ) |>
+#   cols_width(
+#     rec ~ px(600),
+#     evidence ~ px(110)
+#   ) |>
+#   tab_style(style = cell_text(style = "italic"), locations = cells_body(columns = rec, rows = subrec == "yes")) |> 
+#   tab_style(style = cell_text(align = "center"), locations = cells_column_labels(columns = everything())) |>
+#   tab_style(style = cell_text(align = "center"), locations = cells_body(columns = c(evidence))) |>
+#   gt_theme_mg() |>
+#   sub_missing(columns = everything(), missing_text = "") 
+
+```
+
+## Evidence Rating Scheme
+
+***Category A: Supportive Literature***<br/> 
+Randomized controlled trials report statistically significant (P \< 0.01) differences between clinical interventions for a specified clinical outcome.<br/>
+*Level 1*: The literature contains multiple RCTs, and aggregated findings are supported by meta-analysis.<br/>
+*Level 2*: The literature contains multiple RCTs, but the number of studies is insufficient to conduct a viable meta-analysis for the purpose of the Guidelines.<br/>
+*Level 3*: The literature contains a single randomized controlled trial.
+
+***Category B: Suggestive Literature*** <br/>
+Information from observational studies permits inference of beneficial or harmful relationships among clinical interventions and clinical outcomes.<br/>
+*Level 1*: The literature contains observational comparisons (e.g., cohort, case-control research designs) of clinical interventions or conditions and indicates statistically significant differences between clinical interventions for a specified clinical outcome.<br/>
+*Level 2*: The literature contains noncomparative observational studies with associative (e.g., relative risk, correlation) or descriptive statistics.<br/>
+*Level 3*: The literature contains case reports.
+
+***Category C: Equivocal Literature***<br/> 
+The literature cannot determine whether there are beneficial or harmful relationships among clinical interventions and clinical outcomes.<br/>
+*Level 1*: Meta-analysis did not find significant differences (P \> 0.01) among groups or conditions.<br/>
+*Level 2*: The number of studies is insufficient to conduct meta-analysis, and (1) RCTs have not found significant differences among groups or conditions or (2) RCTs report inconsistent findings.<br/>
+*Level 3*: Observational studies report inconsistent findings or do not permit inference of beneficial or harmful relationships.<br/>
+
+***Category D: Insufficient Evidence from Literature*** <br/>
+The lack of scientific evidence in the literature is described by the following terms.
+
+***Inadequate:*** The available literature cannot be used to assess relationships among clinical interventions and clinical outcomes. The literature either does not meet the criteria for content as defined in the "Focus" of the Guidelines or does not permit a clear interpretation of findings due to methodological concerns (e.g., confounding in study design or implementation).
+
+***Silent:*** No identified studies address the specified relationships among interventions and outcomes.
+

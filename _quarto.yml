@@ -16,6 +16,7 @@ book:
     - 2013_difficult_airway.qmd
     - 2012_central_venous_access.qmd
     - 2012_pain.qmd
+    - 2012_preopeval.qmd
     - 2010_chronic_pain.qmd
     # - summary.qmd
     - references.qmd
